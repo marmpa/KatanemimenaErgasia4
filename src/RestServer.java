@@ -181,7 +181,7 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
 
     public String deleteFriend(RestMessage rest) throws RemoteException {
         try {
-            String message = "Delete from friends where friend_send=" + rest.getName() + ", friends_username=" + rest.getUserReceived();
+            String message = "Delete from friends where friend_send='" + rest.getName() + "' and friends_username='" + rest.getUserReceived()+"'";
             System.out.println("Query executed : " + message);
             stat.executeUpdate(message);
         } catch (SQLException ex) {
@@ -212,6 +212,17 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
             Logger.getLogger(RestServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
+    }
+    
+    public String deletePost(String id) throws RemoteException {
+        try {
+            String message = "Delete from posts where id='" + id + "'";
+            System.out.println("Query executed : " + message);
+            stat.executeUpdate(message);
+        } catch (SQLException ex) {
+            Logger.getLogger(RestServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Diagrafike to post";
     }
 
     public static void main(String[] args) throws InterruptedException {

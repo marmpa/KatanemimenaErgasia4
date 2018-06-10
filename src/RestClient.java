@@ -35,7 +35,7 @@ public class RestClient {
             look_op.updatePost("001","Are you there?");
             System.out.println(look_op.showPost("client01"));
             System.out.println(look_op.showPost("client02"));
-            
+            look_op.deletePost("003");
             System.out.println(look_op.topPosts("client01"));
             
             

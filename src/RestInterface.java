@@ -18,6 +18,8 @@ public interface RestInterface extends Remote {
     public String updatePost(String id, String msg) throws RemoteException;
 
     public String topPosts(String name) throws RemoteException;
+    
+    public String deletePost(String id) throws RemoteException;
 
     public String register(RestMessage msg) throws RemoteException;
     
