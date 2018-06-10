@@ -11,7 +11,7 @@ public interface RestInterface extends Remote {
 
     public String showFriends(String name) throws RemoteException;
 
-    public String deleteFriend(String name, String username) throws RemoteException;
+    public String deleteFriend(RestMessage msg) throws RemoteException;
 
     public void createPost(RestMessage msg) throws RemoteException;
     

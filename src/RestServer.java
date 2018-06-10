@@ -14,6 +14,7 @@ import java.util.Date;
 public class RestServer extends UnicastRemoteObject implements RestInterface {
 
     private Statement stat;
+    private Statement statNew;
 
     public RestServer() throws RemoteException {
         super();
@@ -21,6 +22,7 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:chat.db");
             stat = conn.createStatement();
+            statNew = conn.createStatement();
             System.out.println("Database connection established");
             stat.executeUpdate("DROP table if exists users;");
             stat.executeUpdate("DROP table if exists posts;");
@@ -81,9 +83,10 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
             Logger.getLogger(RestServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            while (records.next()) {
+            while (records.next()) 
+            {
                 fr_us = records.getString("friends_username");
-                friends = stat.executeQuery("Select * from users WHERE username='" + fr_us + "'");
+                friends = statNew.executeQuery("Select * from users WHERE username='" + fr_us + "'");
                 na = friends.getString("name");
                 su = friends.getString("surname");
                 us = friends.getString("username");
@@ -156,7 +159,7 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
         String i, d, n, m, r;
         String str = "";
         try {
-            records = stat.executeQuery("SELECT TOP 10 from posts WHERE user_posted='" + name + "'");
+            records = stat.executeQuery("SELECT * from posts WHERE user_posted='" + name + "' LIMIT 10");
             try {
                 while (records.next()) {
                     i = records.getString("id");
@@ -176,9 +179,9 @@ public class RestServer extends UnicastRemoteObject implements RestInterface {
         return str;
     }
 
-    public String deleteFriend(String name, String username) throws RemoteException {
+    public String deleteFriend(RestMessage rest) throws RemoteException {
         try {
-            String message = "Delete from friends where friend_send=" + name + ", friends_username=" + username;
+            String message = "Delete from friends where friend_send=" + rest.getName() + ", friends_username=" + rest.getUserReceived();
             System.out.println("Query executed : " + message);
             stat.executeUpdate(message);
         } catch (SQLException ex) {

@@ -24,8 +24,11 @@ public class RestClient {
             
             look_op.updateValues("tom",new RestMessage("tom", "lia", "showtime", date, "male", "hello everyone", "greece", "athens"));
             
-            look_op.addFriend(new RestMessage("client01","showtim"));
-            look_op.addFriend(new RestMessage("client02","legend"));
+            look_op.addFriend(new RestMessage("client01","showtime"));
+            look_op.addFriend(new RestMessage("client01","legend"));
+            
+            System.out.println(look_op.showFriends("client01"));
+            look_op.deleteFriend(new RestMessage("client01","legend"));
             System.out.println(look_op.showFriends("client01"));
             
             System.out.println(look_op.update());
@@ -33,7 +36,7 @@ public class RestClient {
             System.out.println(look_op.showPost("client01"));
             System.out.println(look_op.showPost("client02"));
             
-            //System.out.println(look_op.topPosts("client01"));
+            System.out.println(look_op.topPosts("client01"));
             
             
 
