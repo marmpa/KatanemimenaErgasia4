@@ -15,9 +15,11 @@ public class RestMessage implements Serializable {
     private String city;
     private String post;
     private String user_received;
+    private String id;
     private Date date;
 
-    public RestMessage(String name, String post, String user_received) {
+    public RestMessage(String id ,String name,String user_received, String post) {
+        this.id = id;
         this.name = name;
         this.post = post;
         this.user_received = user_received;
@@ -33,6 +35,12 @@ public class RestMessage implements Serializable {
         this.description = description;
         this.country = country;
         this.city = city;
+    }
+    
+    public RestMessage(String name, String username)
+    {
+        this.name=name;
+        this.user_received=username;
     }
 
     public String getName() {
@@ -73,5 +81,13 @@ public class RestMessage implements Serializable {
 
     public Date getDate() {
         return this.date;
+    }
+    
+    public String getID() {
+        return this.id;
+    }
+
+    public String showPost() {
+        return "O xristis " + name + " tin mera:" +date + " dimosieuse sto profil tou " +user_received+ " to eksis: " + post;
     }
 }

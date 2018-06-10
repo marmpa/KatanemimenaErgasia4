@@ -13,16 +13,29 @@ public class RestClient {
         try {
             RestInterface look_op = (RestInterface) Naming.lookup("//localhost/RestServer");
 
-            look_op.sendMessage(new RestMessage("client01", "client01", "Hello World!!!!"));
-            look_op.sendMessage(new RestMessage("client02", "client02", "Hello World!!!!"));
-            look_op.sendMessage(new RestMessage("client01", "client02", "Good Morning"));
+            look_op.createPost(new RestMessage("001","client01", "client01", "Hello World!!!!"));
+            look_op.createPost(new RestMessage("002","client02", "client02", "Hello World!!!!"));
+            look_op.createPost(new RestMessage("003","client01", "client02", "Good Morning"));
 
             Date date = new Date();
+            
             look_op.register(new RestMessage("tom", "lia", "showtime", date, "male", "hey there", "greece", "athens"));
-
+            look_op.register(new RestMessage("ma", "ba", "legend", date, "male", "hey here", "greece", "athens"));
+            
+            look_op.updateValues("tom",new RestMessage("tom", "lia", "showtime", date, "male", "hello everyone", "greece", "athens"));
+            
+            look_op.addFriend(new RestMessage("client01","showtim"));
+            look_op.addFriend(new RestMessage("client02","legend"));
+            System.out.println(look_op.showFriends("client01"));
+            
             System.out.println(look_op.update());
-            System.out.println(look_op.update("client01"));
-            System.out.println(look_op.update("client02"));
+            look_op.updatePost("001","Are you there?");
+            System.out.println(look_op.showPost("client01"));
+            System.out.println(look_op.showPost("client02"));
+            
+            //System.out.println(look_op.topPosts("client01"));
+            
+            
 
         } catch (NotBoundException ex) {
             ex.printStackTrace();
