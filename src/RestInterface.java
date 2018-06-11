@@ -4,7 +4,8 @@
 import java.rmi.*;
 
 public interface RestInterface extends Remote {
-
+ 
+    //ενα interface που ορίζει όλες τις τις συναρτήσεις που θα χρησιμοποιησουμε με τα ορισματα τους 
     public String updateValues(String name, RestMessage msg) throws RemoteException;
 
     public String addFriend(RestMessage msg) throws RemoteException;

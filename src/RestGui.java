@@ -25,6 +25,9 @@ import java.util.Map;
 import java.util.Random;
 import javax.swing.border.*;
 
+//Γενικα βασικό Gui με ολες τις επιλογές του χρηστη, αντιστοιχα κουμπια, κειμενα και textfields καθως και 
+//gridlayout ωστε να ταιριαζουν ακριβως καθε φορα τα αντικείμενα στο παράθυρο
+
 public class RestGui extends JFrame {//Κλάση Gui που κάνει extend το Frame για να δημιουργήσω το παράθυρο
 
     public final int windowWidth = 800;//οι διαστάσεις του παραθύρου
@@ -41,8 +44,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
     }
 
     public void LoginMenu() {
-        JLabel login_JLabel1, login_JLabel2;//Δηλώνω δύο labels
-        JTextField login_JTextField;//Και ένα Textfiled για να μπορώ να γράψω
+        JLabel login_JLabel1;//Δηλώνω δύο labels
         String login_JLabel1Text = "Καλως ηρθατε στην εφαρμογή InstaFace";//κείμενο
         JButton login_button = new JButton();
         JButton register_button = new JButton();
@@ -439,7 +441,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         this.guiPane.setLayout(NewReservation_GridLayout);
         //.......................................
 
-        username = new JLabel("Ψευδώνυμο φίλου", SwingConstants.CENTER);//παρομοίως
+        username = new JLabel("Ψευδώνυμο φίλου", SwingConstants.CENTER);
 
 
         username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
@@ -478,9 +480,9 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         GridLayout NewReservation_GridLayout = new GridLayout(8, 2);
         this.guiPane.setLayout(NewReservation_GridLayout);
         //.......................................
-        id = new JLabel("Μοναδικό id της δημοσίευσης", SwingConstants.CENTER);//παρομοίως
-        friends_name = new JLabel("Προφίλ στο οποίο θα δημοσιευτεί (μπορεί να είναι και το δικό μας)", SwingConstants.CENTER);//παρομοίως
-        message = new JLabel("Γράψτε τι σκέφτεστε..", SwingConstants.CENTER);//παρομοίως
+        id = new JLabel("Μοναδικό id της δημοσίευσης", SwingConstants.CENTER);
+        friends_name = new JLabel("Προφίλ στο οποίο θα δημοσιευτεί (μπορεί να είναι και το δικό μας)", SwingConstants.CENTER);
+        message = new JLabel("Γράψτε τι σκέφτεστε..", SwingConstants.CENTER);
 
 
         id_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
@@ -566,7 +568,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         GridLayout NewReservation_GridLayout = new GridLayout(4, 2);
         this.guiPane.setLayout(NewReservation_GridLayout);
         //.......................................
-        id = new JLabel("Μοναδικό id της δημοσίευσης προς διαγραφή", SwingConstants.CENTER);//παρομοίως
+        id = new JLabel("Μοναδικό id της δημοσίευσης προς διαγραφή", SwingConstants.CENTER);//jlabel για να γραψει ο χρηστης id
 
 
         id_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
