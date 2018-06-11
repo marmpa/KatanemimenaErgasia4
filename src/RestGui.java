@@ -51,7 +51,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
 
         this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
         this.guiPane = this.getContentPane();//θέτω το guiPane στο pane που υπάρχει είδη στο παράθυρο
-        GridLayout login_BorderLayout = new GridLayout(4, 2, 20, 20);//θέτω το layout του παραθύρου
+        GridLayout login_BorderLayout = new GridLayout(3, 2, 20, 20);//θέτω το layout του παραθύρου
         this.guiPane.setLayout(login_BorderLayout);//το θέτω στο παραπάνω pane
 
         login_JLabel1 = new JLabel(login_JLabel1Text, JLabel.CENTER);//φτιάχνω ένα νέο αντικείμενο τύπου JLabel και του βάζω σαν text το login_JLavel1Text
@@ -77,7 +77,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         }
         );
 
-        login_button.addActionListener(//βάζω actionListener ο οποίος ακούει οταν πατήσει ο χρήστης enter στο textfield
+        register_button.addActionListener(//βάζω actionListener ο οποίος ακούει οταν πατήσει ο χρήστης enter στο textfield
                 new ActionListener() {//νέο αντικείμενο ActionListener
             public void actionPerformed(ActionEvent e) {//συνάρτηση lambda η οποία τσεκάρει για τι διάφορα events στην προκημένη περίπτωση πότε πατήθηκε enter
                 Register();//καλή την MainMenu με text το κείμενο που έδοσε ο χρήστης
@@ -101,18 +101,19 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         //Κώδικας που χρειάζεται σε κάθε παράθυρο
         this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
         this.guiPane = this.getContentPane();
-        GridLayout NewReservation_GridLayout = new GridLayout(4, 2);
+        GridLayout NewReservation_GridLayout = new GridLayout(3, 2);
         this.guiPane.setLayout(NewReservation_GridLayout);
         //.......................................
-        name = new JLabel("Όνομα");//βάζω κείμενο στο label και το δημιουργώ
-        username = new JLabel("Ψευδώνυμο");//παρομοίως
+        name = new JLabel("Όνομα", SwingConstants.CENTER);//βάζω κείμενο στο label και το δημιουργώ
+        username = new JLabel("Ψευδώνυμο", SwingConstants.CENTER);//παρομοίως
 
         name_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
         username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
 
         login_JButton = new JButton("Σύνδεση");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
         back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
-
+        login_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        
         login_JButton.addActionListener(//βάζω actionlistener
                 new ActionListener() {
             public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
@@ -145,15 +146,15 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         GridLayout NewReservation_GridLayout = new GridLayout(9, 2);
         this.guiPane.setLayout(NewReservation_GridLayout);
         //.......................................
-        name = new JLabel("Όνομα");//βάζω κείμενο στο label και το δημιουργώ
-        surname = new JLabel("Επώνυμο");//παρομοίως
-        username = new JLabel("Ψευδώνυμο");//παρομοίως
-        birthday = new JLabel("Γενέθλια");//παρομοίως
-        gender = new JLabel("Φύλο");//παρομοίως
-        description = new JLabel("Περιγραφή");//παρομοίως
-        country = new JLabel("Χώρα");//παρομοίως
-        city = new JLabel("Πόλη");//παρομοίως
-        
+        name = new JLabel("Όνομα", SwingConstants.CENTER);//βάζω κείμενο στο label και το δημιουργώ
+        surname = new JLabel("Επώνυμο", SwingConstants.CENTER);//παρομοίως
+        username = new JLabel("Ψευδώνυμο", SwingConstants.CENTER);//παρομοίως
+        birthday = new JLabel("Γενέθλια", SwingConstants.CENTER);//παρομοίως
+        gender = new JLabel("Φύλο", SwingConstants.CENTER);//παρομοίως
+        description = new JLabel("Περιγραφή", SwingConstants.CENTER);//παρομοίως
+        country = new JLabel("Χώρα", SwingConstants.CENTER);//παρομοίως
+        city = new JLabel("Πόλη", SwingConstants.CENTER);//παρομοίως
+
         gender_JComboBox = new JComboBox(new String[] //φτίαχνω ένα JComboBox και σαν επιλογή του βάζω όλα τα αντικείμενα που μπορεί να πάρει
         {"Αντρας", "Γυναίκα"});
 
@@ -167,6 +168,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
 
         register_JButton = new JButton("Εγγραφή");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
         back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        register_JButton.setHorizontalAlignment(SwingConstants.CENTER);
 
         register_JButton.addActionListener(//βάζω actionlistener
                 new ActionListener() {
@@ -202,33 +204,40 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
     }
 
     public void MainMenu(String userName) {
-        JLabel title_JLabel, menuTitle_JLabel;//δηλώνω δυο JLabel αντικείμενα
-        JButton option1_JButton, option2_JButton, option3_JButton, option4_JButton, option5_JButton;//Δηλώνω τρία αντικείμενα τύπου JButton
-
-        JLabel hotelImage_JLabel;//αντικείμενο τύπου label
+        JLabel title_JLabel;//δηλώνω δυο JLabel αντικείμενα
+        JButton option1_JButton, option2_JButton, option3_JButton, option4_JButton, option5_JButton, option6_JButton, option7_JButton, option8_JButton;//Δηλώνω 8 αντικείμενα τύπου JButton
 
         this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
         this.guiPane = this.getContentPane();//θέτω το guiPane με το current pane
-        GridLayout mainMenu_BorderLayout = new GridLayout(4, 2);//δημιουργώ ένα νέο αντικείμενο gridlayout στο οποίο και το τοποθετώ πιο μετά τα αντικείμενα
+        GridLayout mainMenu_BorderLayout = new GridLayout(9, 1);//δημιουργώ ένα νέο αντικείμενο gridlayout στο οποίο και το τοποθετώ πιο μετά τα αντικείμενα
         this.guiPane.setLayout(mainMenu_BorderLayout);//θέτω το layout αυτου το pane
 
-        title_JLabel = new JLabel("InstaFace");//ορίζω όνομα στο laybel
+        title_JLabel = new JLabel("InstaFace - Μενού Επιλογών", SwingConstants.CENTER);//ορίζω όνομα στο laybel
         title_JLabel.setFont(new Font("Serif", Font.BOLD, 30));//ορίζω το μέγεθος γραμματοσειρας
 
-        menuTitle_JLabel = new JLabel("Μενού Επιλογών");//ορίζω όνομα στο laybel
-        menuTitle_JLabel.setFont(new Font("Serif", Font.BOLD, 20));//ορίζω το μέγεθος γραμματοσειρας
-
-        option1_JButton = new JButton("Δημιουργία");//ορίζω όνομα στο button
-        option2_JButton = new JButton("Αναζήτηση");//ορίζω όνομα στο button
-        option3_JButton = new JButton("Τροποποίηση");//παρομοίος
-        option4_JButton = new JButton("Διαγραφή");//παρομοίος
-        option5_JButton = new JButton("Advanced");//παρομοίος
-
+        option1_JButton = new JButton("Ανανέωση προφίλ");//ορίζω όνομα στο button
+        option2_JButton = new JButton("Προσθήκη φίλου");//ορίζω όνομα στο button
+        option3_JButton = new JButton("Προβολή φίλων");//παρομοίος
+        option4_JButton = new JButton("Διαγραφή φίλου");//παρομοίος
+        option5_JButton = new JButton("Δημιουργία post");//παρομοίος
+        option6_JButton = new JButton("Τροποποίηση post");//παρομοίος
+        option7_JButton = new JButton("Top 10 posts");//παρομοίος
+        option8_JButton = new JButton("Διαγραφή post");//παρομοίος
+        
+        option1_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option2_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option3_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option4_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option5_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option6_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option7_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        option8_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+        
         option1_JButton.addActionListener(//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
                 new ActionListener() {//νέο αντικείμενο τύπου Actionlister
             public void actionPerformed(ActionEvent e)//κάνω overwrite την μέθοδο actionPerformed
             {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για καινούργια κράτηση
-                NewPost();
+                UpdateProfil();
             }
         }
         );
@@ -237,7 +246,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για διαγραφή κράτησης
-                DeletePost();
+                AddFriend();
             }
         }
         );
@@ -246,7 +255,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για έλενχο κράτησης
-                ShowPost();
+                //δειχνει κατευθειαν απο εδω τους φιλους γιατι εχουμε ηδη το name που θελει η συναρτηση 
             }
         }
         );
@@ -255,7 +264,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για έλενχο κενών δωματίων
-                Top10Posts();
+                DeleteFriend();
             }
         }
         );
@@ -264,24 +273,327 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα advanced menu
-                ChangeProfile();
+                CreatePost();
+            }
+        }
+        );
+        
+        option6_JButton.addActionListener(
+                new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
+        {
+            public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα advanced menu
+                ChangePost();
+            }
+        }
+        );
+        
+        option7_JButton.addActionListener(
+                new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
+        {
+            public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα advanced menu
+                //δειχνει κατευθειαν απο εδω τα post γιατι εχουμε ηδη το name που θελει η συναρτηση 
+            }
+        }
+        );
+        
+        option8_JButton.addActionListener(
+                new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
+        {
+            public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα advanced menu
+                DeletePost();
             }
         }
         );
 
         this.guiPane.add(title_JLabel);//βάζω το αντικείμενο μέσα το Pane
-        this.guiPane.add(menuTitle_JLabel);//βάζω το αντικείμενο μέσα το Pane
 
         this.guiPane.add(option1_JButton);//βάζω το JButton μέσα το Pane
         this.guiPane.add(option2_JButton);//βάζω το JButton μέσα το Pane
         this.guiPane.add(option3_JButton);//βάζω το JButton μέσα το Pane
         this.guiPane.add(option4_JButton);//βάζω το JButton μέσα το Pane
         this.guiPane.add(option5_JButton);//βάζω το JButton μέσα το Pane
+        this.guiPane.add(option6_JButton);//βάζω το JButton μέσα το Pane
+        this.guiPane.add(option7_JButton);//βάζω το JButton μέσα το Pane
+        this.guiPane.add(option8_JButton);//βάζω το JButton μέσα το Pane
 
         this.setContentPane(this.guiPane);//βάζω το pane στο contentpane του current frame
 
     }
+    
+    public void UpdateProfil() {
+        JLabel name, surname, username, birthday, gender, description, country, city;//δηλώνω δύο αντικείμενα JLabel
+        JTextField name_JTextField, surname_JTextField, username_JTextField, birthday_JTextField, description_JTextField, country_JTextField, city_JTextField;//δηλώνω JTextField αντικείμενο
+        JComboBox gender_JComboBox;//φτιάχνω JComboBox αντικείμενο
+        JButton update_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(9, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        name = new JLabel("Όνομα", SwingConstants.CENTER);//βάζω κείμενο στο label και το δημιουργώ
+        surname = new JLabel("Επώνυμο", SwingConstants.CENTER);//παρομοίως
+        username = new JLabel("Ψευδώνυμο", SwingConstants.CENTER);//παρομοίως
+        birthday = new JLabel("Γενέθλια", SwingConstants.CENTER);//παρομοίως
+        gender = new JLabel("Φύλο", SwingConstants.CENTER);//παρομοίως
+        description = new JLabel("Περιγραφή", SwingConstants.CENTER);//παρομοίως
+        country = new JLabel("Χώρα", SwingConstants.CENTER);//παρομοίως
+        city = new JLabel("Πόλη", SwingConstants.CENTER);//παρομοίως
 
+        gender_JComboBox = new JComboBox(new String[] //φτίαχνω ένα JComboBox και σαν επιλογή του βάζω όλα τα αντικείμενα που μπορεί να πάρει
+        {"Αντρας", "Γυναίκα"});
+
+        name_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        surname_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        birthday_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        description_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        country_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        city_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        update_JButton = new JButton("Ανανέωση στοιχείων");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        update_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        update_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+        this.guiPane.add(name);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(name_JTextField);//παρομοίως
+        this.guiPane.add(surname);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(surname_JTextField);//παρομοίως
+        this.guiPane.add(username);//παρομοίως
+        this.guiPane.add(username_JTextField);//παρομοίως
+        this.guiPane.add(birthday);//παρομοίως
+        this.guiPane.add(birthday_JTextField);//παρομοίως
+        this.guiPane.add(gender);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(gender_JComboBox);//παρομοίως
+        this.guiPane.add(description);//παρομοίως
+        this.guiPane.add(description_JTextField);//παρομοίως
+        this.guiPane.add(country);//παρομοίως
+        this.guiPane.add(country_JTextField);//παρομοίως
+        this.guiPane.add(city);//παρομοίως
+        this.guiPane.add(city_JTextField);//παρομοίως
+
+        this.guiPane.add(update_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+    
+    public void AddFriend() {
+        JLabel username;//δηλώνω δύο αντικείμενα JLabel
+        JTextField username_JTextField;
+        JButton add_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(4, 1);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+
+        username = new JLabel("Ψευδώνυμο φίλου", SwingConstants.CENTER);//παρομοίως
+
+
+        username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        add_JButton = new JButton("Προσθήκη φίλου");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        add_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        add_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+
+        this.guiPane.add(username);//παρομοίως
+        this.guiPane.add(username_JTextField);//παρομοίως
+
+        this.guiPane.add(add_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+    
+    public void DeleteFriend() {
+        JLabel username;//δηλώνω δύο αντικείμενα JLabel
+        JTextField username_JTextField;
+        JButton delete_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(4, 1);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+
+        username = new JLabel("Ψευδώνυμο φίλου", SwingConstants.CENTER);//παρομοίως
+
+
+        username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        delete_JButton = new JButton("Διαγραφή φίλου");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        delete_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        delete_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+
+        this.guiPane.add(username);//παρομοίως
+        this.guiPane.add(username_JTextField);//παρομοίως
+
+        this.guiPane.add(delete_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+    
+    public void CreatePost() {
+        JLabel id ,friends_name, message;//δηλώνω δύο αντικείμενα JLabel
+        JTextField id_JTextField, friends_name_JTextField, message_JTextField;//δηλώνω JTextField αντικείμενο
+        JButton create_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(8, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        id = new JLabel("Μοναδικό id της δημοσίευσης", SwingConstants.CENTER);//παρομοίως
+        friends_name = new JLabel("Προφίλ στο οποίο θα δημοσιευτεί (μπορεί να είναι και το δικό μας)", SwingConstants.CENTER);//παρομοίως
+        message = new JLabel("Γράψτε τι σκέφτεστε..", SwingConstants.CENTER);//παρομοίως
+
+
+        id_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        friends_name_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        message_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        create_JButton = new JButton("Δημιουργία post");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        create_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        create_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+        this.guiPane.add(id);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(id_JTextField);//παρομοίως
+        this.guiPane.add(friends_name);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(friends_name_JTextField);//παρομοίως
+        this.guiPane.add(message);//παρομοίως
+        this.guiPane.add(message_JTextField);//παρομοίως
+
+        this.guiPane.add(create_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+
+    public void ChangePost() {
+        JLabel id , message;//δηλώνω δύο αντικείμενα JLabel
+        JTextField id_JTextField, message_JTextField;//δηλώνω JTextField αντικείμενο
+        JButton change_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(6, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        id = new JLabel("Μοναδικό id της δημοσίευσης", SwingConstants.CENTER);//παρομοίως
+        message = new JLabel("Αλλαγή δημοσίευσης σε:", SwingConstants.CENTER);//παρομοίως
+
+
+        id_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        message_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        change_JButton = new JButton("Τροποποίηση δημοσίευσης");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        change_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        change_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+        this.guiPane.add(id);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(id_JTextField);//παρομοίως
+        this.guiPane.add(message);//παρομοίως
+        this.guiPane.add(message_JTextField);//παρομοίως
+
+        this.guiPane.add(change_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+    
+    public void DeletePost() {
+        JLabel id;//δηλώνω δύο αντικείμενα JLabel
+        JTextField id_JTextField;//δηλώνω JTextField αντικείμενο
+        JButton delete_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(4, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        id = new JLabel("Μοναδικό id της δημοσίευσης προς διαγραφή", SwingConstants.CENTER);//παρομοίως
+
+
+        id_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        delete_JButton = new JButton("Διαγραφή δημοσίευσης");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+        delete_JButton.setHorizontalAlignment(SwingConstants.CENTER);
+
+        delete_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                
+            }
+        }
+        );
+
+        this.guiPane.add(id);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(id_JTextField);//παρομοίως
+
+        this.guiPane.add(delete_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+/*
     public void NewPost() {
         JLabel from_JLabel, to_JLabel, reservationID_JLabel;//δηλώνω δύο αντικείμενα JLabel
         JTextField from_JTextField, to_JTextField, reservationID_JTextField;//δηλώνω JTextField αντικείμενο
@@ -401,7 +713,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         //.......................................
     }
 
-    public void DeletePost() {//διαγράφη μια κράτηση
+    public void DeletePostx() {//διαγράφη μια κράτηση
         JLabel deleteID_JLabel;//δηλώνω αντικείμενο
         JTextField deleteID_JTextField;//παρομοίως
         JButton confirm_JButton, back_JButton;//παρομοίος
@@ -724,17 +1036,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         frame.setVisible(true);//το κάνω visible
     }
 
-    public JButton NewBackButton() {//Επιστρέφει ένα κουμπί το οποίο γυρνάει πίσω στο αρχικο μενού
-        JButton back_JButton = new JButton("Back");//δημιουργώ το κουμπλι με κείμενο πάνω στο κουμπί Back
-        back_JButton.addActionListener(//βάζω ένα ActionListener ώστε να καλώ την συνάρτηση MainMenu() όταν πατιέται το κουμπί
-                new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                MainMenu(currentName);//καλήται η main συνάρτηση όταν πατηθεί το κουμπί
-            }
-        }
-        );
-        return back_JButton;
-    }
+    
 
     static class BarChart extends JPanel {//νέα κλάση Barchart η οποία κάνει extend to JPanel
 
@@ -817,6 +1119,16 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
             g.drawString("Xronos", stringWidth, stringHeight);//θέτω και το κάτω label
 
         }
+    }*/
+public JButton NewBackButton() {//Επιστρέφει ένα κουμπί το οποίο γυρνάει πίσω στο αρχικο μενού
+        JButton back_JButton = new JButton("Back");//δημιουργώ το κουμπλι με κείμενο πάνω στο κουμπί Back
+        back_JButton.addActionListener(//βάζω ένα ActionListener ώστε να καλώ την συνάρτηση MainMenu() όταν πατιέται το κουμπί
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MainMenu(currentName);//καλήται η main συνάρτηση όταν πατηθεί το κουμπί
+            }
+        }
+        );
+        return back_JButton;
     }
-
 }
