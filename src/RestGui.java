@@ -71,7 +71,8 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         login_button.addActionListener(//βάζω actionListener ο οποίος ακούει οταν πατήσει ο χρήστης enter στο textfield
                 new ActionListener() {//νέο αντικείμενο ActionListener
             public void actionPerformed(ActionEvent e) {//συνάρτηση lambda η οποία τσεκάρει για τι διάφορα events στην προκημένη περίπτωση πότε πατήθηκε enter
-                MainMenu("tom");//καλή την MainMenu με text το κείμενο που έδοσε ο χρήστης
+                //MainMenu("tom");//καλή την MainMenu με text το κείμενο που έδοσε ο χρήστης
+                Login();
             }
         }
         );
@@ -79,7 +80,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         login_button.addActionListener(//βάζω actionListener ο οποίος ακούει οταν πατήσει ο χρήστης enter στο textfield
                 new ActionListener() {//νέο αντικείμενο ActionListener
             public void actionPerformed(ActionEvent e) {//συνάρτηση lambda η οποία τσεκάρει για τι διάφορα events στην προκημένη περίπτωση πότε πατήθηκε enter
-                //Register();//καλή την MainMenu με text το κείμενο που έδοσε ο χρήστης
+                Register();//καλή την MainMenu με text το κείμενο που έδοσε ο χρήστης
             }
         }
         );
@@ -91,6 +92,113 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
 
         this.setContentPane(this.guiPane);//θέτω το pane του jframe στο pane που δημιούργησα και έβαλα αντικείμενα πιο πριν
 
+    }
+
+    public void Login() {
+        JLabel name, username;//δηλώνω δύο αντικείμενα JLabel
+        JTextField name_JTextField, username_JTextField;//δηλώνω JTextField αντικείμενο
+        JButton login_JButton, back_JButton;//δημιουργώ 2 κουμπιάα
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(4, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        name = new JLabel("Όνομα");//βάζω κείμενο στο label και το δημιουργώ
+        username = new JLabel("Ψευδώνυμο");//παρομοίως
+
+        name_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        login_JButton = new JButton("Σύνδεση");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+
+        login_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                MainMenu(currentName);
+            }
+        }
+        );
+
+        this.guiPane.add(name);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(name_JTextField);//παρομοίως
+        this.guiPane.add(username);//παρομοίως
+        this.guiPane.add(username_JTextField);//παρομοίως
+
+        this.guiPane.add(login_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
+    }
+
+    public void Register() {
+        JLabel name, surname, username, birthday, gender, description, country, city;//δηλώνω δύο αντικείμενα JLabel
+        JTextField name_JTextField, surname_JTextField, username_JTextField, birthday_JTextField, description_JTextField, country_JTextField, city_JTextField;//δηλώνω JTextField αντικείμενο
+        JComboBox gender_JComboBox;//φτιάχνω JComboBox αντικείμενο
+        JButton register_JButton, back_JButton;//δημιουργώ 2 κουμπιά
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.getContentPane().removeAll();//αφαιρώ τα πάντα απο το Frame
+        this.guiPane = this.getContentPane();
+        GridLayout NewReservation_GridLayout = new GridLayout(9, 2);
+        this.guiPane.setLayout(NewReservation_GridLayout);
+        //.......................................
+        name = new JLabel("Όνομα");//βάζω κείμενο στο label και το δημιουργώ
+        surname = new JLabel("Επώνυμο");//παρομοίως
+        username = new JLabel("Ψευδώνυμο");//παρομοίως
+        birthday = new JLabel("Γενέθλια");//παρομοίως
+        gender = new JLabel("Φύλο");//παρομοίως
+        description = new JLabel("Περιγραφή");//παρομοίως
+        country = new JLabel("Χώρα");//παρομοίως
+        city = new JLabel("Πόλη");//παρομοίως
+        
+        gender_JComboBox = new JComboBox(new String[] //φτίαχνω ένα JComboBox και σαν επιλογή του βάζω όλα τα αντικείμενα που μπορεί να πάρει
+        {"Αντρας", "Γυναίκα"});
+
+        name_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        surname_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        username_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        birthday_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        description_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        country_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+        city_JTextField = new JTextField();//φτίαχνω νέο αντικείμενο JTextField
+
+        register_JButton = new JButton("Εγγραφή");//φτίαχνω νέο αντικείμενο JButton και το βάζω όνομα
+        back_JButton = NewBackButton();//καλώ την συνάρτηση NewBackButton() που επιστρέφει ένα έτοιμο κουμπί
+
+        register_JButton.addActionListener(//βάζω actionlistener
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {//αν πατηθεί το κουμπί
+                MainMenu(currentName);
+            }
+        }
+        );
+
+        this.guiPane.add(name);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(name_JTextField);//παρομοίως
+        this.guiPane.add(surname);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(surname_JTextField);//παρομοίως
+        this.guiPane.add(username);//παρομοίως
+        this.guiPane.add(username_JTextField);//παρομοίως
+        this.guiPane.add(birthday);//παρομοίως
+        this.guiPane.add(birthday_JTextField);//παρομοίως
+        this.guiPane.add(gender);//προσθέτει στον καμβά το αντικείμενο
+        this.guiPane.add(gender_JComboBox);//παρομοίως
+        this.guiPane.add(description);//παρομοίως
+        this.guiPane.add(description_JTextField);//παρομοίως
+        this.guiPane.add(country);//παρομοίως
+        this.guiPane.add(country_JTextField);//παρομοίως
+        this.guiPane.add(city);//παρομοίως
+        this.guiPane.add(city_JTextField);//παρομοίως
+
+        this.guiPane.add(register_JButton);//παρομοίως
+        this.guiPane.add(back_JButton);//παρομοίως
+
+        //Κώδικας που χρειάζεται σε κάθε παράθυρο
+        this.setContentPane(this.guiPane);
+        //.......................................
     }
 
     public void MainMenu(String userName) {
@@ -120,7 +228,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener() {//νέο αντικείμενο τύπου Actionlister
             public void actionPerformed(ActionEvent e)//κάνω overwrite την μέθοδο actionPerformed
             {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για καινούργια κράτηση
-                NewReservationForm();
+                NewPost();
             }
         }
         );
@@ -129,7 +237,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για διαγραφή κράτησης
-                DeleteResvationForm();
+                DeletePost();
             }
         }
         );
@@ -138,7 +246,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για έλενχο κράτησης
-                CheckReservationForm();
+                ShowPost();
             }
         }
         );
@@ -147,7 +255,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα για έλενχο κενών δωματίων
-                RentalsAvailabilityDatesPopup();
+                Top10Posts();
             }
         }
         );
@@ -156,7 +264,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                 new ActionListener()//actionlistener ο οποίος κοιτάει πότε πατιέται το κουμπί
         {
             public void actionPerformed(ActionEvent e) {//Εάν πατειθεί το συγκεκριμένο κουμπί τότε μπαίνει στην φόρμα advanced menu
-                AdvancedMenu();
+                ChangeProfile();
             }
         }
         );
@@ -174,7 +282,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
 
     }
 
-    public void NewReservationForm() {
+    public void NewPost() {
         JLabel from_JLabel, to_JLabel, reservationID_JLabel;//δηλώνω δύο αντικείμενα JLabel
         JTextField from_JTextField, to_JTextField, reservationID_JTextField;//δηλώνω JTextField αντικείμενο
         JComboBox reservationItems_JComboBox, reservationID_JComboBox;//φτιάχνω JComboBox αντικείμενο
@@ -293,7 +401,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         //.......................................
     }
 
-    public void DeleteResvationForm() {//διαγράφη μια κράτηση
+    public void DeletePost() {//διαγράφη μια κράτηση
         JLabel deleteID_JLabel;//δηλώνω αντικείμενο
         JTextField deleteID_JTextField;//παρομοίως
         JButton confirm_JButton, back_JButton;//παρομοίος
@@ -350,7 +458,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         //.......................................
     }
 
-    public void CheckReservationForm() {//ελέγχει εάν υπάρχει μια κράτηση
+    public void ShowPost() {//ελέγχει εάν υπάρχει μια κράτηση
         JLabel checkID_JLabel, reservationInfo_JLabel;//δηλώνω αντικείμενο τύπου JLabel
         JTextField checkID_JTextField;//δηλώνω αντικείμενο τύπου JTextField
         JButton confirm_JButton, back_JButton;//και τύπου JButton
@@ -394,7 +502,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         //.......................................
     }
 
-    public void RentalsAvailabilityDatesPopup() {//δείχνει ένα Popup στο οποιο διαλέγει ημερομηνίες για την συνάρτηση RentalsAvailability
+    public void Top10Posts() {//δείχνει ένα Popup στο οποιο διαλέγει ημερομηνίες για την συνάρτηση RentalsAvailability
         JLabel fromDate_JLabel, toDate_JLabel;//δηλώνω αντικείμενα JLabel
         JTextField fromDate_JTextField, toDate_JTextField;//δηλώνω αντικείμενα JTextField
 
@@ -522,7 +630,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         }
     }
 
-    public void AdvancedDatesPopup() {//ίδιο μενού με το RentalsAvailabilityDatesPopup απλά αλλάζει το που επιστρέφει αν πατηθεί κλείσειμο
+    public void AdvancedDatesPopup() {//ίδιο μενού με το Top10Posts απλά αλλάζει το που επιστρέφει αν πατηθεί κλείσειμο
         //και που άν πατηθεί OK
         JLabel fromDate_JLabel, toDate_JLabel;
         JTextField fromDate_JTextField, toDate_JTextField;
@@ -556,7 +664,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
                         checkIfNotAnswered = false;
                     }
                 } else if (result == JOptionPane.CLOSED_OPTION) {
-                    AdvancedMenu();
+                    ChangeProfile();
                     return;
                 }
             } catch (ParseException ex) {
@@ -567,7 +675,7 @@ public class RestGui extends JFrame {//Κλάση Gui που κάνει extend �
         CompletionChartDiagram(from_Date, to_Date);
     }
 
-    public void AdvancedMenu() {//Μενού που περιέχει κάποιες λίγο πιο πολύπλοκες διαδικασίες του ξενοδοχείου
+    public void ChangeProfile() {//Μενού που περιέχει κάποιες λίγο πιο πολύπλοκες διαδικασίες του ξενοδοχείου
 
         JButton getReservations_JButton, showBarChart_JButton, back_JButton;//δηλώνω τα κουμπιά
         //Κώδικας που χρειάζεται σε κάθε παράθυρο
